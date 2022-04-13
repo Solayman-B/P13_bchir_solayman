@@ -29,9 +29,9 @@ def index(request):
 # ac lacinia augue pulvinar
 # sit amet.
 def letting(request, letting_id):
-    letting = Letting.objects.get(id=letting_id)
+    lettings = Letting.objects.get(id=letting_id)
     context = {
-        "title": letting.title,
-        "address": letting.address,
+        "title": lettings.title,
+        "address": lettings.address,
     }
-    return render(request, "lettings/lettings.html", context)
+    return render(request, "lettings/letting.html", context)
