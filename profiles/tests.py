@@ -1,3 +1,7 @@
-from django.test import TestCase
+from django.test import Client
+client = Client()
 
-# Create your tests here.
+def test_index(client):
+	response = client.get('/')
+	data = response.data.decode()
+	assert 'Welcome' in data
