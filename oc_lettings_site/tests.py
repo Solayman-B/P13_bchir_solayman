@@ -16,3 +16,8 @@ def test_index():
     assert expected_content in content
     assert response.status_code == 200
     assertTemplateUsed(response, "index.html")
+
+
+
+def test_dummy():
+    assert 1
