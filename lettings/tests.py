@@ -3,6 +3,7 @@ import pytest
 from django.urls import reverse
 from django.test import Client
 from pytest_django.asserts import assertTemplateUsed
+from .models import Address, Letting
 
 @pytest.mark.django_db
 def test_index():
@@ -22,10 +23,12 @@ def test_index():
 def test_lettings():
     client = Client()
 
-    path = reverse('lettings:lettings/1/')
+    adress_1 = Address.objects.create(number = 1,  street = "sesame street", city = "Los Angeles", state = "LA", zip_code = 75012, country_iso_code = "USA")
+    letting_1 = Letting.objects.create(title="Beautifull place", address=adress_1)
+    path = reverse('lettings:lettings', kwargs={"letting_id":1})
     response = client.get(path)
     content = response.content.decode()
-    expected_content = "<title></title>"
+    expected_content = "<title>Beautifull place</title>"
 
     assert expected_content in content
     assert response.status_code == 200
