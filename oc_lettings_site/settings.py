@@ -13,7 +13,7 @@ SECRET_KEY = "fp$9^593hsriajg$_%=5trot9g!1qa@ew(o-1#@=&4%=hp46(s"
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['0.0.0.0']
+ALLOWED_HOSTS = ['localhost']
 
 
 # Application definition
@@ -65,10 +65,14 @@ WSGI_APPLICATION = "oc_lettings_site.wsgi.application"
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": os.path.join(BASE_DIR, "oc-lettings-site.sqlite3"),
-    }
+"default": {
+"ENGINE":"django.db.backends.postgresql_psycopg2",
+"NAME":"orange_county",
+"USER":"admin",
+"PASSWORD":"admin",
+"HOST":"localhost",
+"PORT":"5432",
+}
 }
 
 
@@ -102,7 +106,7 @@ USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = True
+# USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
