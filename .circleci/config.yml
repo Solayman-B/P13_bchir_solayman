@@ -2,11 +2,14 @@
 # See: https://circleci.com/docs/2.0/configuration-reference
 version: 2.1
 orbs:
+  python: circleci/python@2.0.3
   docker: circleci/docker@2.0.3
+  heroku: circleci/heroku@1.2.6
 
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 jobs:
+
   build_test:
     # Specify the execution environment. You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
     # See: https://circleci.com/docs/2.0/configuration-reference/#docker-machine-macos-windows-executor
@@ -21,8 +24,11 @@ jobs:
           command: |
             pip install --user --no-cache-dir -r requirements.txt
       - run:
-          name: Run Tests
+          name: Run pytest
           command: ~/.local/bin/pytest
+      - run:
+          name: Run flake8
+          command: ~/.local/bin/flake8
   build_push_docker_image:
     docker:
       - image: circleci/python:3.9.4
@@ -32,7 +38,7 @@ jobs:
           name: Build app binary
           command: |
             pip install --user --no-cache-dir -r requirements.txt
-            ~/.local/bin/pyinstaller -F hello_world.py
+#            ~/.local/bin/pyinstaller -F hello_world.py
       - setup_remote_docker
       - docker/check
       - docker/build:
