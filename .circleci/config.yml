@@ -15,6 +15,16 @@ jobs:
     # See: https://circleci.com/docs/2.0/configuration-reference/#docker-machine-macos-windows-executor
     docker:
       - image: circleci/python:3.9.4
+      - image: circleci/postgres:14.0
+        environment:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: password
+          POSTGRES_DB: orange_county
+    environment:
+      DB_NAME: orange_county
+      DB_USER: postgres
+      DB_PASSWORD: password
+      DB_HOST: localhost
     # Add steps to the job
     # See: https://circleci.com/docs/2.0/configuration-reference/#steps
     steps:
