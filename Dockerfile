@@ -2,7 +2,7 @@
 FROM python:3.9.4-alpine
 
 # set work directory
-WORKDIR /code
+WORKDIR /app
 
 # set environment variables
 ENV PYTHONDONTWRITEBYTECODE 1
@@ -20,3 +20,5 @@ RUN pip install -r requirements.txt
 
 # copy project
 COPY . .
+
+CMD python manage.py runserver 0.0.0.0:$PORT
