@@ -32,7 +32,7 @@ def test_lettings():
         zip_code=75012,
         country_iso_code="USA",
     )
-    letting_1 = Letting.objects.create(title="Beautifull place", address=adress_1)
+    Letting.objects.create(title="Beautifull place", address=adress_1)
     path = reverse("lettings:lettings", kwargs={"letting_id": 1})
     response = client.get(path)
     content = response.content.decode()
