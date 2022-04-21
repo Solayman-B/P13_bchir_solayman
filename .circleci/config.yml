@@ -39,6 +39,9 @@ jobs:
       - run:
           name: Run pytest
           command: ~/.local/bin/pytest
+      -run:
+          name: Run black
+          command: ~/.local/bin/black
       - run:
           name: Run flake8
           command: ~/.local/bin/flake8
