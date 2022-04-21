@@ -36,7 +36,8 @@ jobs:
           command: |
             python3 -m venv venv
             . venv/bin/activate
-            pip install --user --no-cache-dir -r requirements.txt
+            python3 -m pip install --upgrade pip
+            pip install --no-cache-dir -r requirements.txt
       - run:
           name: Run pytest
           command: |
