@@ -45,7 +45,9 @@ jobs:
             pytest
       - run:
           name: Run flake8
-          command: flake8
+          command: |
+            . venv/bin/activate
+            flake8
   build_push_docker_image:
     docker:
       - image: docker:20.10.14-git
