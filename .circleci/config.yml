@@ -42,10 +42,10 @@ jobs:
           name: Run pytest
           command: |
             . venv/bin/activate
-            ~/.local/bin/pytest
+            pytest
       - run:
           name: Run flake8
-          command: ~/.local/bin/flake8
+          command: flake8
   build_push_docker_image:
     docker:
       - image: docker:20.10.14-git
