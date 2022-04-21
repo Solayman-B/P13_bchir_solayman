@@ -4,7 +4,7 @@ from django.urls import reverse
 from django.test import Client
 from pytest_django.asserts import assertTemplateUsed
 
-@pytest.mark.django_db
+# @pytest.mark.django_db
 def test_index():
     client = Client()
 

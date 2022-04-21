@@ -7,7 +7,7 @@ from pytest_django.asserts import assertTemplateUsed
 from .models import Profile
 
 
-@pytest.mark.django_db
+# @pytest.mark.django_db
 def test_index():
     client = Client()
 
@@ -21,7 +21,7 @@ def test_index():
     assertTemplateUsed(response, "profiles/index.html")
 
 
-@pytest.mark.django_db
+# @pytest.mark.django_db
 def test_profiles():
     client = Client()
 
