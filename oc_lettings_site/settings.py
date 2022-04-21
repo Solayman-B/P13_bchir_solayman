@@ -1,4 +1,4 @@
-import os
+import os, platform
 from decouple import config
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -64,14 +64,18 @@ WSGI_APPLICATION = "oc_lettings_site.wsgi.application"
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
-
+dbHost = ""
+if platform.system() == "Linux": # Linux means running inside Ubuntu in docker in my case.
+  dbHost = "db" # or use .env file
+else:
+  dbHost = "localhost"
 DATABASES = {
 "default": {
        'ENGINE': 'django.db.backends.postgresql',
        'NAME': config("DATABASE_NAME"),
        'USER': config("DATABASE_USER"),
        'PASSWORD': config("DATABASE_PASSWORD"),
-       'HOST': config("DATABASE_HOST"),
+       'HOST': dbHost,
        'PORT': config("DATABASE_PORT"),
 }
 }
