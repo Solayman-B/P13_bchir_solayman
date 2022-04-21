@@ -50,9 +50,9 @@ jobs:
       - run:
           name: Build and push docker image
           command: |
-            docker build -t $DOCKER_LOGIN/python-oc-lettings-fr_web:$CIRCLE_SHA1 .
-            echo $DOCKER_PASSWORD | docker login --username $DOCKER-LOGIN --password-stdin
-            docker push $DOCKER_LOGIN/python-oc-lettings-fr_web:$CIRCLE_SHA1
+            docker build -t slaffer75/python-oc-lettings-fr_web:$CIRCLE_SHA1 .
+            echo $DOCKER_PASSWORD | docker login --username slaffer75 --password-stdin
+            docker push slaffer75/python-oc-lettings-fr_web:$CIRCLE_SHA1
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
