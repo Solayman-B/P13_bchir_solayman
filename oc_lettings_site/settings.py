@@ -14,20 +14,20 @@ SECRET_KEY = config("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
 
 INSTALLED_APPS = [
-	"oc_lettings_site.apps.OCLettingsSiteConfig",
+    "oc_lettings_site.apps.OCLettingsSiteConfig",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-	"lettings",
+    "lettings",
     "profiles",
 ]
 
@@ -65,19 +65,21 @@ WSGI_APPLICATION = "oc_lettings_site.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 dbHost = ""
-if platform.system() == "Linux": # Linux means running inside Ubuntu in docker in my case.
-  dbHost = "localhost" # or use .env file
+if (
+    platform.system() == "Linux"
+):  # Linux means running inside Ubuntu in docker in my case.
+    dbHost = "localhost"  # or use .env file
 else:
-  dbHost = "db"
+    dbHost = "db"
 DATABASES = {
-"default": {
-       'ENGINE': 'django.db.backends.postgresql',
-       'NAME': config("DATABASE_NAME"),
-       'USER': config("DATABASE_USER"),
-       'PASSWORD': config("DATABASE_PASSWORD"),
-       'HOST': dbHost,
-       'PORT': config("DATABASE_PORT"),
-}
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": config("DATABASE_NAME"),
+        "USER": config("DATABASE_USER"),
+        "PASSWORD": config("DATABASE_PASSWORD"),
+        "HOST": dbHost,
+        "PORT": config("DATABASE_PORT"),
+    }
 }
 
 

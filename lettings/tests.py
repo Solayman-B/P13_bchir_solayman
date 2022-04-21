@@ -5,11 +5,12 @@ from django.test import Client
 from pytest_django.asserts import assertTemplateUsed
 from .models import Address, Letting
 
+
 @pytest.mark.django_db
 def test_index():
     client = Client()
 
-    path = reverse('lettings:index')
+    path = reverse("lettings:index")
     response = client.get(path)
     content = response.content.decode()
     expected_content = "<title>Lettings</title>"
@@ -23,9 +24,16 @@ def test_index():
 def test_lettings():
     client = Client()
 
-    adress_1 = Address.objects.create(number = 1,  street = "sesame street", city = "Los Angeles", state = "LA", zip_code = 75012, country_iso_code = "USA")
+    adress_1 = Address.objects.create(
+        number=1,
+        street="sesame street",
+        city="Los Angeles",
+        state="LA",
+        zip_code=75012,
+        country_iso_code="USA",
+    )
     letting_1 = Letting.objects.create(title="Beautifull place", address=adress_1)
-    path = reverse('lettings:lettings', kwargs={"letting_id":1})
+    path = reverse("lettings:lettings", kwargs={"letting_id": 1})
     response = client.get(path)
     content = response.content.decode()
     expected_content = "<title>Beautifull place</title>"

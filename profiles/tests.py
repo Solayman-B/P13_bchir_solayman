@@ -11,7 +11,7 @@ from .models import Profile
 def test_index():
     client = Client()
 
-    path = reverse('profiles:index')
+    path = reverse("profiles:index")
     response = client.get(path)
     content = response.content.decode()
     expected_content = "<title>Profiles</title>"
@@ -25,9 +25,13 @@ def test_index():
 def test_profiles():
     client = Client()
 
-    user_1 = User.objects.create_user(username="test_username",email="test@gmail.com",password="password",)
+    user_1 = User.objects.create_user(
+        username="test_username",
+        email="test@gmail.com",
+        password="password",
+    )
     profile_1 = Profile.objects.create(user=user_1, favorite_city="Paris")
-    path = reverse('profiles:profile', kwargs={"username":user_1.username})
+    path = reverse("profiles:profile", kwargs={"username": user_1.username})
     response = client.get(path)
     content = response.content.decode()
     expected_content = "<title>test_username</title>"
