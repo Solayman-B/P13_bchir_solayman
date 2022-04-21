@@ -66,9 +66,9 @@ WSGI_APPLICATION = "oc_lettings_site.wsgi.application"
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 dbHost = ""
 if platform.system() == "Linux": # Linux means running inside Ubuntu in docker in my case.
-  dbHost = "db" # or use .env file
+  dbHost = "localhost" # or use .env file
 else:
-  dbHost = "localhost"
+  dbHost = "db"
 DATABASES = {
 "default": {
        'ENGINE': 'django.db.backends.postgresql',
