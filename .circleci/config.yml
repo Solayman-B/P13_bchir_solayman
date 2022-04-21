@@ -34,10 +34,14 @@ jobs:
       - run:
           name: Install Python Dependencies
           command: |
+            python3 -m venv venv
+            . venv/bin/activate
             pip install --user --no-cache-dir -r requirements.txt
       - run:
           name: Run pytest
-          command: ~/.local/bin/pytest
+          command: |
+            . venv/bin/activate
+            ~/.local/bin/pytest
       - run:
           name: Run flake8
           command: ~/.local/bin/flake8
