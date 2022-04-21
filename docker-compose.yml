@@ -13,8 +13,9 @@ services:
       POSTGRES_DB: orange_county
     ports:
       - "5432:5432"
+    container_name: db
     networks:
-      oc_lettings_network:
+      - orange_county_network
 
   web:
     build: .
@@ -26,13 +27,16 @@ services:
       - "8000:8000"
     env_file:
       - ./.env
-    networks:
-      oc_lettings_network:
-    links:
+    depends_on:
       - db
+    links:
+      - db:db
+    networks:
+      - orange_county
 
 volumes:
   postgres_data:
 
 networks:
-  oc_lettings_network:
+  orange_county:
+    driver: bridge
