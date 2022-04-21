@@ -29,7 +29,6 @@ jobs:
     # See: https://circleci.com/docs/2.0/configuration-reference/#steps
     steps:
       - checkout
-      - python/load-cache
       - run:
           name: Wait for db to run
           command: dockerize -wait tcp://localhost:5432 -timeout 1m
@@ -37,7 +36,6 @@ jobs:
           name: Install Python Dependencies
           command: |
             pip install --user --no-cache-dir -r requirements.txt
-      - python/save-cache
       - run:
           name: Run pytest
           command: ~/.local/bin/pytest
