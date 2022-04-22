@@ -21,14 +21,4 @@ RUN pip install -r requirements.txt
 # copy project
 COPY . .
 
-CMD python manage.py runserver 0.0.0.0:$PORT:m
-#
-#RUN apt-get update
-#RUN apt-get -y install python-pip
-#RUN apt-get update
-#RUN pip install --upgrade pip
-#RUN pip install psycopg2-binary
-#
-#COPY base.py base.py
-#
-#CMD ["python", "base.py"]
+CMD python manage.py runserver 0.0.0.0:$PORT

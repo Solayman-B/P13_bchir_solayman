@@ -14,8 +14,6 @@ services:
     ports:
       - "5432:5432"
     container_name: db
-#    networks:
-#      - orange_county_network
 
   web:
     build: .
@@ -31,12 +29,6 @@ services:
       - db
     links:
       - db:db
-#    networks:
-#      - orange_county
 
 volumes:
   postgres_data:
-#
-#networks:
-#  orange_county:
-#    driver: bridge
