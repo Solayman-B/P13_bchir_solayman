@@ -80,8 +80,8 @@ if (
     dbHost = "localhost"  # or use .env file
 else:
     dbHost = "db"
+
 DATABASES = {
-    'default': dj_database_url.config()
     # "default": {
     #     "ENGINE": "django.db.backends.postgresql",
     #     "NAME": "orange_county",  # env("DATABASE_NAME"),
@@ -92,6 +92,7 @@ DATABASES = {
     # }
 }
 
+DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
