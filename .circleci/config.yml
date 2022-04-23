@@ -42,7 +42,7 @@ jobs:
           name: Run pytest
           command: |
             . venv/bin/activate
-            pytest
+            pytest -v --no-migrations
       - run:
           name: Run black and flake8
           command: |
