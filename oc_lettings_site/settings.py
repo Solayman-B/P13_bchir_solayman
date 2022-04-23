@@ -82,14 +82,14 @@ else:
     dbHost = "db"
 
 DATABASES = {
-    # "default": {
-    #     "ENGINE": "django.db.backends.postgresql",
-    #     "NAME": "orange_county",  # env("DATABASE_NAME"),
-    #     "USER": "postgres",  # env("DATABASE_USER"),
-    #     "PASSWORD": "password",  # env("DATABASE_PASSWORD"),
-    #     "HOST": "localhost",
-    #     "PORT": "5432",  # env("DATABASE_PORT"),
-    # }
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "orange_county",  # env("DATABASE_NAME"),
+        "USER": "postgres",  # env("DATABASE_USER"),
+        "PASSWORD": "password",  # env("DATABASE_PASSWORD"),
+        "HOST": "localhost",
+        "PORT": "5432",  # env("DATABASE_PORT"),
+    }
 }
 
 DATABASES['default'] = dj_database_url.config(conn_max_age=600)
