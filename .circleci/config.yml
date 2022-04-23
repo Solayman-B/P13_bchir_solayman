@@ -15,15 +15,15 @@ jobs:
     # See: https://circleci.com/docs/2.0/configuration-reference/#docker-machine-macos-windows-executor
     docker:
       - image: cimg/python:3.9.4
-        environment:
-          ENV: CIRCLE
-          DATABASE_URL: postgresql://circleci@localhost/circle_test
-      - image: cimg/postgres:9.6
-        environment:
-          PGHOST: localhost
-          PGUSER: postgres
-          POSTGRES_USER: postgres
-          POSTGRES_DB: orange_county
+#        environment:
+#          ENV: CIRCLE
+#          DATABASE_URL: postgresql://circleci@localhost/circle_test
+#      - image: cimg/postgres:9.6
+#        environment:
+#          PGHOST: localhost
+#          PGUSER: postgres
+#          POSTGRES_USER: postgres
+#          POSTGRES_DB: orange_county
     # Add steps to the job
     # See: https://circleci.com/docs/2.0/configuration-reference/#steps
     steps:
@@ -48,7 +48,7 @@ jobs:
           command: |
             . venv/bin/activate
             black .
-            flake8
+#            flake8
   build_push_docker_image:
     docker:
       - image: docker:20.10.14-git

@@ -1,24 +1,24 @@
 import os
-import platform
-import environ
-import dj_database_url
+# import platform
+# import environ
+# import dj_database_url
 
-env = environ.Env(
-    # set casting, default value
-    DEBUG=(bool, False)
-)
+# env = environ.Env(
+#     # set casting, default value
+#     DEBUG=(bool, False)
+# )
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Take environment variables from .env file
-environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
+# environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = env('SECRET_KEY')
+SECRET_KEY = "fp$9^593hsriajg$_%=5trot9g!1qa@ew(o-1#@=&4%=hp46(s"  # env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -73,26 +73,36 @@ WSGI_APPLICATION = "oc_lettings_site.wsgi.application"
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
-dbHost = ""
-if (
-    platform.system() == "Linux"
-):  # Linux means running inside Ubuntu in docker in my case.
-    dbHost = "localhost"  # or use .env file
-else:
-    dbHost = "db"
+
+
+# dbHost = ""
+# if (
+#     platform.system() == "Linux"
+# ):  # Linux means running inside Ubuntu in docker in my case.
+#     dbHost = "localhost"  # or use .env file
+# else:
+#     dbHost = "db"
+
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.postgresql",
+#         "NAME": "orange_county",  # env("DATABASE_NAME"),
+#         "USER": "postgres",  # env("DATABASE_USER"),
+#         "PASSWORD": "password",  # env("DATABASE_PASSWORD"),
+#         "HOST": "localhost",
+#         "PORT": "5432",  # env("DATABASE_PORT"),
+#     }
+# }
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": "orange_county",  # env("DATABASE_NAME"),
-        "USER": "postgres",  # env("DATABASE_USER"),
-        "PASSWORD": "password",  # env("DATABASE_PASSWORD"),
-        "HOST": "localhost",
-        "PORT": "5432",  # env("DATABASE_PORT"),
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'oc-lettings-site.sqlite3'),
     }
 }
 
-DATABASES['default'] = dj_database_url.config(conn_max_age=600)
+
+# DATABASES['default'] = dj_database_url.config(conn_max_age=600)
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
