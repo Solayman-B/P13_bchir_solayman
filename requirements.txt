@@ -51,7 +51,7 @@ requests==2.27.1
 roundrobin==0.0.2
 six==1.16.0
 sqlparse==0.4.2
-streamlink==2.4.0+37.ge38caa1
+streamlink==2.4.0
 ticket==0.0.1
 tinydb==4.5.0
 tomli==1.2.1
