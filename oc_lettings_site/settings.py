@@ -82,11 +82,11 @@ else:
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": env("DATABASE_NAME"),
-        "USER": env("DATABASE_USER"),
-        "PASSWORD": env("DATABASE_PASSWORD"),
+        "NAME": "orange_county",#env("DATABASE_NAME"),
+        "USER": "postgres",#env("DATABASE_USER"),
+        "PASSWORD": "password",#env("DATABASE_PASSWORD"),
         "HOST": dbHost,
-        "PORT": env("DATABASE_PORT"),
+        "PORT": "5432",#env("DATABASE_PORT"),
     }
 }
 
