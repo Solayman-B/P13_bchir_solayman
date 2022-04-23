@@ -1,5 +1,5 @@
 # pull official base image
-FROM python:3.9
+FROM python:3.9.4-alpine
 
 # set work directory
 WORKDIR /
@@ -21,4 +21,5 @@ RUN pip install -r requirements.txt
 # copy project
 COPY . .
 
+RUN python manage.py collectstatic --noinput
 CMD python manage.py runserver 0.0.0.0:$PORT
