@@ -1,6 +1,7 @@
 import os
 import platform
 import environ
+import dj_database_url
 
 env = environ.Env(
     # set casting, default value
@@ -80,14 +81,15 @@ if (
 else:
     dbHost = "db"
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": "orange_county",  # env("DATABASE_NAME"),
-        "USER": "postgres",  # env("DATABASE_USER"),
-        "PASSWORD": "password",  # env("DATABASE_PASSWORD"),
-        "HOST": "localhost",
-        "PORT": "5432",  # env("DATABASE_PORT"),
-    }
+    'default': dj_database_url.config()
+    # "default": {
+    #     "ENGINE": "django.db.backends.postgresql",
+    #     "NAME": "orange_county",  # env("DATABASE_NAME"),
+    #     "USER": "postgres",  # env("DATABASE_USER"),
+    #     "PASSWORD": "password",  # env("DATABASE_PASSWORD"),
+    #     "HOST": "localhost",
+    #     "PORT": "5432",  # env("DATABASE_PORT"),
+    # }
 }
 
 
