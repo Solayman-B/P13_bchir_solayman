@@ -1,10 +1,6 @@
 # Use the latest 2.1 version of CircleCI pipeline process engine.
 # See: https://circleci.com/docs/2.0/configuration-reference
 version: 2.1
-orbs:
-  python: circleci/python@2.0.3
-  docker: circleci/docker@2.0.3
-  heroku: circleci/heroku@1.2.6
 
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
@@ -36,7 +32,7 @@ jobs:
           command: |
             . venv/bin/activate
             black .
-#            flake8
+            flake8
   build_push_docker_image:
     docker:
       - image: docker:20.10.14-git
@@ -50,7 +46,8 @@ jobs:
             echo $DOCKER_PASSWORD | docker login --username slaffer75 --password-stdin
             docker push slaffer75/python-oc-lettings-fr_web:$CIRCLE_SHA1
   deploy_dev:
-    machine: true
+    machine:
+      image: ubuntu-2004:202201-02
     steps:
       - checkout
       - run:
