@@ -1,7 +1,8 @@
 .idea/
 **/__pycache__
 *.pyc
-env
+env/
+.env
 .gitignore
 oc-lettings-site.sqlite3
 data/
