@@ -85,7 +85,7 @@ DATABASES = {
         "NAME": "orange_county",  # env("DATABASE_NAME"),
         "USER": "postgres",  # env("DATABASE_USER"),
         "PASSWORD": "password",  # env("DATABASE_PASSWORD"),
-        "HOST": dbHost,
+        "HOST": "localhost",
         "PORT": "5432",  # env("DATABASE_PORT"),
     }
 }
