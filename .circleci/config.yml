@@ -70,10 +70,10 @@ workflows:
             - build_test
           filters:
             branches:
-              only: sentry #main
+              only: main
       - deploy_dev:
           requires:
             - build_push_docker_image
           filters:
             branches:
-              only: sentry #main
+              only: main
