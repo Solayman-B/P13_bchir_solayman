@@ -30,7 +30,6 @@ ALLOWED_HOSTS = ["oc-lettings-17.herokuapp.com", "127.0.0.1"]
 # Application definition
 
 INSTALLED_APPS = [
-    "oc_lettings_site.apps.OCLettingsSiteConfig",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
