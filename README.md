@@ -75,3 +75,26 @@ Utilisation de PowerShell, comme ci-dessus sauf :
 
 - Pour activer l'environnement virtuel, `.\venv\Scripts\Activate.ps1` 
 - Remplacer `which <my-command>` par `(Get-Command <my-command>).Path`
+
+### Déploiement
+
+#### Principe de fonctionnement
+
+- Un `git push` sur la branche main déclenche le déploiement du site web sur heroku à [cette adresse](https://oc-lettings-17.herokuapp.com) dans le cas où les tests et la dockerisation se sont déroulés sans problème au sein de la pipeline circleci.
+
+#### Configuration d'heroku
+
+- Inscrivez-vous sur le site d'[heroku](https://www.heroku.com)
+- Cliquez sur le [lien de téléchargement](https://devcenter.heroku.com/articles/heroku-command-line) afin d'obtenir et d'installer heroku CLI.
+- Entrez les commandes suivantes dans un terminal:\
+`heroku login` cliquez sur le bouton "se connecter" dans la fenêtre qui s'ouvre.\
+`heroku auth:token` copier le token générer par heroku, vous pouvez l'enregistrer en temps que variable d'environnement dans circleci en vous [rendant ici](https://app.circleci.com/pipelines/), cliquez sur les "...", puis "Project Settings", et "Environment Variables". 
+
+#### Déploiement d'heroku
+
+- Pushez votre code sur git afin de déployer votre application sur heroku:\
+`heroku git:remote -a nom_de_votre_repo_git`
+`git add .`\
+`git commit -am "déploiement sur heroku"`\
+`git push heroku master`
+
