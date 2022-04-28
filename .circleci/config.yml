@@ -31,6 +31,7 @@ jobs:
           name: Run black and flake8
           command: |
             . venv/bin/activate
+            black --check .
             black .
             flake8
   build_push_docker_image:
